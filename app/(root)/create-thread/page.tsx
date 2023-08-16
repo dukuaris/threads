@@ -10,6 +10,8 @@ async function Page() {
 
   const userInfo = await fetchUser(user.id)
 
+  console.log("Create Thread: ", user.id)
+
   if (!userInfo?.onboarded) redirect("/onboarding")
 
   return (

@@ -15,7 +15,10 @@ async function Page({params}: {params: {id: string}}) {
 
   const userInfo = await fetchUser(params.id)
 
+  console.log("Profile ID: ", params.id)
+
   if (!userInfo?.onboarded) redirect("/onboarding")
+
   return (
     <section>
       <ProfileHeader 
