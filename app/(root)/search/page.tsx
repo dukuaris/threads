@@ -5,7 +5,6 @@ import { redirect } from "next/navigation"
 import Image from "next/image"
 import { profileTabs } from "@/constants"
 import ThreadsTab from "@/components/shared/ThreadsTab"
-
 import UserCard from "@/components/cards/UserCard"
 
 async function page() {

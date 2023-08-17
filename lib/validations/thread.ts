@@ -1,7 +1,4 @@
-import { connect } from 'http2'
 import * as z from 'zod'
-import { connectToDB } from '../mongoose'
-import Thread from '../models/thread.model'
 
 export const ThreadValidation = z.object({
   thread: z.string().nonempty().min(3, {message: 'Minimum 3 characters'}),
