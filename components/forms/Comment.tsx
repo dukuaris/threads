@@ -7,15 +7,13 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { zodResolver} from '@hookform/resolvers/zod'
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 import { CommentValidation} from '@/lib/validations/thread'
 import { addCommentToThread } from '@/lib/actions/thread.actions'
@@ -29,10 +27,9 @@ interface Props {
 }
 
 const Comment = ({threadId, currentUserImg, currentUserId}: Props) => {
-  const router = useRouter()
   const pathname = usePathname()
   
-  const form = useForm({
+  const form = useForm<z.infer<typeof CommentValidation>>({
     resolver: zodResolver(CommentValidation),
     defaultValues: {
       thread: '',
@@ -64,7 +61,7 @@ const Comment = ({threadId, currentUserImg, currentUserId}: Props) => {
               <FormLabel>
                 <Image 
                   src={currentUserImg}
-                  alt="Profile image"
+                  alt="current_user_image"
                   width={48}
                   height={48}
                   className='rounded-full object-cover'
